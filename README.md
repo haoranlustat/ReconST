@@ -15,7 +15,7 @@ It uses a gated autoencoder to identify the most informative subset of genes for
 - Produces gene lists compatible with MERFISH, seqFISH, Xenium, MERSCOPE, etc.  
 - Lightweight, easy-to-use Python API
 
-  ### Citation:
+### Citation:
 Lu, Haoran, et al. "Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments." bioRxiv (2025): 2025-10.
 https://www.biorxiv.org/content/10.1101/2025.10.08.681071v1.abstract
 
