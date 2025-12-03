@@ -418,6 +418,88 @@
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorial
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ReconST Example: Gene Panel Selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="api/" class="md-nav__link">
         
@@ -508,7 +590,7 @@
 
 <h2 id="4-tutorials">4. Tutorials<a class="headerlink" href="#4-tutorials" title="Permanent link">&para;</a></h2>
 <p>A complete working example tutorial:</p>
-<p><strong><a href="example.ipynb">Example.ipynb</a></strong></p>
+<p><strong><a href="example/">Example.ipynb</a></strong></p>
 <h2 id="5-method-overview">5. Method Overview<a class="headerlink" href="#5-method-overview" title="Permanent link">&para;</a></h2>
 <p>ReconST uses a gated autoencoder architecture to identify genes that best reconstruct the full transcriptome when compressed to a small panel. A learnable gating layer assigns an importance weight to each gene, and an L1 sparsity penalty encourages most gates to approach zero so that the model focuses on a compact, informative subset of genes.</p>
 <p>During training, the gated expression matrix is passed through an encoder–decoder network that learns a low-dimensional representation and reconstructs the original expression profile. Genes with consistently high gate values are considered informative, while those with near-zero weights are excluded. After convergence, the final gene panel is obtained from the non-zero gates or by selecting the top-ranked genes. This end-to-end formulation provides a simple and scalable way to learn biologically meaningful gene panels suitable for targeted spatial transcriptomics.</p>
