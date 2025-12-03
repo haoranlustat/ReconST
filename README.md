@@ -17,7 +17,7 @@ It uses a gated autoencoder to identify the most informative subset of genes for
 
 [Lu, Haoran, et al. *"Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments."* bioRxiv (2025): 2025-10.](https://www.biorxiv.org/content/10.1101/2025.10.08.681071v1.abstract)
 
----
+
 
 ## 2. Installation
 
@@ -27,7 +27,7 @@ Install directly from GitHub:
 pip install git+https://github.com/haoranlustat/ReconST.git
 ```
 
----
+
 
 ## 3. Quick Start
 
@@ -67,7 +67,7 @@ A complete working example is provided here:
 **[example.ipynb](example.ipynb)**
 
 
----
+
 
 ## 4. Method Overview
 
@@ -75,7 +75,7 @@ ReconST introduces a learnable gating layer that assigns an importance weight to
 L1 regularization produces sparse selections, and genes with non-zero gate values form the final panel.  
 This approach integrates gene scoring and representation learning into a simple, unified training pipeline.
 
----
+
 
 ## 5. Documentation
 
