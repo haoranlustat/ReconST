@@ -1,6 +1,6 @@
 # ReconST: Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments
 
-![Graphical Abstract](Graphical%20Abstract.png)
+![Workflow of ReconST](Graphical%20Abstract.png)
 
 ## 1. Introduction
 
