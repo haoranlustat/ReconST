@@ -1,21 +1,23 @@
 # ReconST: Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments
 
+![Graphical Abstract](Graphical%20Abstract.png)
+
 ## 1. Introduction
 
-ReconST is a Python package for automated and data-driven gene panel design in targeted spatial transcriptomics experiments.  
-It uses a gated autoencoder to identify the most informative subset of genes for reconstructing transcriptomic structure, enabling efficient and biologically meaningful panel selection.
+ReconST is a data-driven framework for designing optimal gene panels for targeted spatial transcriptomics experiments. Modern spatial transcriptomics platforms such as MERFISH, seqFISH, Xenium, and MERSCOPE can only measure a limited number of genes, making the choice of panel crucial for capturing transcriptomic structure and spatial organization. ReconST addresses this challenge by learning which genes best preserve global expression patterns and biological variation when compressed to a small panel.
+
+The method uses a gated autoencoder trained on scRNA-seq data to identify the most informative genes for reconstructing the full transcriptome. The resulting gene panel preserves cell-type structure and spatial patterns when transferred to spatial datasets, as demonstrated using a high-resolution mouse brain MERFISH atlas. ReconST is implemented as a lightweight Python package with a simple, reproducible workflow for model training, gene-ranking, and exporting panels compatible with modern spatial transcriptomics platforms.
 
 ### Key Features
 
 - End-to-end gene selection using a gated autoencoder  
 - L1-based sparsity for compact and interpretable gene panels  
 - Directly operates on scRNA-seq data  
-- Produces gene lists compatible with MERFISH, seqFISH, Xenium, MERSCOPE, etc.  
 - Lightweight and easy-to-use Python API  
 
 ### Citation
 
-[Lu, Haoran, et al. *"Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments."* bioRxiv (2025): 2025-10.](https://www.biorxiv.org/content/10.1101/2025.10.08.681071v1.abstract)
+[Lu, H., et al. *"Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments."* bioRxiv (2025): 2025-10.](https://www.biorxiv.org/content/10.1101/2025.10.08.681071v1.abstract)
 
 
 
@@ -71,10 +73,9 @@ A complete working example is provided here:
 
 ## 4. Method Overview
 
-ReconST introduces a learnable gating layer that assigns an importance weight to each gene.  
-L1 regularization produces sparse selections, and genes with non-zero gate values form the final panel.  
-This approach integrates gene scoring and representation learning into a simple, unified training pipeline.
+ReconST uses a gated autoencoder architecture to identify genes that best reconstruct the full transcriptome when compressed to a small panel. A learnable gating layer assigns an importance weight to each gene, and an L1 sparsity penalty encourages most gates to approach zero so that the model focuses on a compact, informative subset of genes.
 
+During training, the gated expression matrix is passed through an encoder–decoder network that learns a low-dimensional representation and reconstructs the original expression profile. Genes with consistently high gate values are considered informative, while those with near-zero weights are excluded. After convergence, the final gene panel is obtained from the non-zero gates or by selecting the top-ranked genes. This end-to-end formulation provides a simple and scalable way to learn biologically meaningful gene panels suitable for targeted spatial transcriptomics.
 
 
 ## 5. Documentation
