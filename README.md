@@ -7,20 +7,18 @@
 ReconST is a Python package for automated and data-driven gene panel design in targeted spatial transcriptomics experiments.
 It uses a gated autoencoder to identify the most informative subset of genes for reconstructing transcriptomic structure, enabling efficient and biologically meaningful panel selection.
 
-
-### Citation:
-Lu, Haoran, et al. "Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments." bioRxiv (2025): 2025-10.
-https://www.biorxiv.org/content/10.1101/2025.10.08.681071v1.abstract
-
-
-
 ### Key Features
 
 - End-to-end gene selection using a gated autoencoder  
 - L1-based sparsity for compact and interpretable gene panels  
 - Directly operates on scRNA-seq data  
 - Produces gene lists compatible with MERFISH, seqFISH, Xenium, MERSCOPE, etc.  
-- Lightweight, minimal-dependency Python API  
+- Lightweight, easy-to-use Python API
+
+  ### Citation:
+Lu, Haoran, et al. "Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments." bioRxiv (2025): 2025-10.
+https://www.biorxiv.org/content/10.1101/2025.10.08.681071v1.abstract
+
 
 ## 2. Installation
 
