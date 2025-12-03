@@ -1,18 +1,20 @@
 # ReconST: Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments
 
+
+
+# 1.Introduction
+
 ReconST is a Python package for automated and data-driven gene panel design in targeted spatial transcriptomics experiments.
 It uses a gated autoencoder to identify the most informative subset of genes for reconstructing transcriptomic structure, enabling efficient and biologically meaningful panel selection.
 
-Preprint:
-https://www.biorxiv.org/content/10.1101/2025.10.08.681071v1.abstract
 
-Citation:
+## Citation:
 Lu, Haoran, et al. "Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments." bioRxiv (2025): 2025-10.
 https://www.biorxiv.org/content/10.1101/2025.10.08.681071v1.abstract
 
--------------------------------------------------------------------------------
 
-Key Features
+
+## Key Features
 
 - End-to-end gene selection using a gated autoencoder  
 - L1-based sparsity for compact and interpretable gene panels  
@@ -22,34 +24,15 @@ Key Features
 
 -------------------------------------------------------------------------------
 
-Installation
+# 2.Installation
 
 Install directly from GitHub:
 
 pip install git+https://github.com/haoranlustat/ReconST.git
 
--------------------------------------------------------------------------------
 
-Data Structure
 
-Expected directory layout:
-
-./example_data/
-  ├── example_sc.h5ad
-  ├── example_merfish.h5ad
-  ├── example_merfish_cell_metadata.csv
-  ├── example_merfish_ccf_coordinates.csv
-  └── example_merfish_gene.csv
-
-./gene_panels/
-  └── all_gene_symbols.csv   # optional utility output
-
-./results/
-  └── (model outputs and selected gene panels)
-
--------------------------------------------------------------------------------
-
-Quick Start
+## Quick Start
 
 import reconst
 from reconst import (
@@ -61,20 +44,20 @@ from reconst import (
     select_genes,
 )
 
-# 1. Prepare shared gene set
+## 1. Prepare shared gene set
 common_genes = prepare_common_genes(sc_adata, merfish_adata)
 
-# 2. Build dataloader
+## 2. Build dataloader
 loader = create_data_loader(sc_adata[:, common_genes], batch_size=256)
 
-# 3. Train gated autoencoder
+## 3. Train gated autoencoder
 model = FeatureScreeningAutoencoder(n_genes=len(common_genes))
 train_model(model, loader, n_epochs=1000)
 
-# 4. Select top genes
+## 4. Select top genes
 selected_genes = select_genes(model, top_k=200)
 
-# 5. Optional: evaluate on spatial data
+## 5. Optional: evaluate on spatial data
 metrics = evaluate_model(model, merfish_adata[:, common_genes])
 
 -------------------------------------------------------------------------------
