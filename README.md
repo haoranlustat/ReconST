@@ -62,23 +62,23 @@ metrics = evaluate_model(model, merfish_adata[:, common_genes])
 ```
 
 
-## Example
+## 4. Tutorials
 
-A complete working example is provided here:
+A complete working example tutorial:
 
-**[example.ipynb](example.ipynb)**
-
-
+**[Example.ipynb](example.ipynb)**
 
 
-## 4. Method Overview
+
+
+## 5. Method Overview
 
 ReconST uses a gated autoencoder architecture to identify genes that best reconstruct the full transcriptome when compressed to a small panel. A learnable gating layer assigns an importance weight to each gene, and an L1 sparsity penalty encourages most gates to approach zero so that the model focuses on a compact, informative subset of genes.
 
 During training, the gated expression matrix is passed through an encoder–decoder network that learns a low-dimensional representation and reconstructs the original expression profile. Genes with consistently high gate values are considered informative, while those with near-zero weights are excluded. After convergence, the final gene panel is obtained from the non-zero gates or by selecting the top-ranked genes. This end-to-end formulation provides a simple and scalable way to learn biologically meaningful gene panels suitable for targeted spatial transcriptomics.
 
 
-## 5. Documentation
+## 6. Documentation
 
 Full documentation and tutorials:
 
