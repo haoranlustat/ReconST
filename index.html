@@ -345,10 +345,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#4-tutorials" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example
+        4. Tutorials
       
     </span>
   </a>
@@ -356,10 +356,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-method-overview" class="md-nav__link">
+  <a href="#5-method-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Method Overview
+        5. Method Overview
       
     </span>
   </a>
@@ -367,10 +367,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-documentation" class="md-nav__link">
+  <a href="#6-documentation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Documentation
+        6. Documentation
       
     </span>
   </a>
@@ -460,19 +460,19 @@
 
 
 <h1 id="reconst-optimal-gene-panel-selection-for-targeted-spatial-transcriptomics-experiments">ReconST: Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments<a class="headerlink" href="#reconst-optimal-gene-panel-selection-for-targeted-spatial-transcriptomics-experiments" title="Permanent link">&para;</a></h1>
+<p><img alt="Workflow of ReconST" src="Graphical%20Abstract.png" /></p>
 <h2 id="1-introduction">1. Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h2>
-<p>ReconST is a Python package for automated and data-driven gene panel design in targeted spatial transcriptomics experiments.<br />
-It uses a gated autoencoder to identify the most informative subset of genes for reconstructing transcriptomic structure, enabling efficient and biologically meaningful panel selection.</p>
+<p>ReconST is a data-driven framework for designing optimal gene panels for targeted spatial transcriptomics experiments. Modern spatial transcriptomics platforms such as MERFISH, seqFISH, Xenium, and MERSCOPE can only measure a limited number of genes, making the choice of panel crucial for capturing transcriptomic structure and spatial organization. ReconST addresses this challenge by learning which genes best preserve global expression patterns and biological variation when compressed to a small panel.</p>
+<p>The method uses a gated autoencoder trained on scRNA-seq data to identify the most informative genes for reconstructing the full transcriptome. The resulting gene panel preserves cell-type structure and spatial patterns when transferred to spatial datasets, as demonstrated using a high-resolution mouse brain MERFISH atlas. ReconST is implemented as a lightweight Python package with a simple, reproducible workflow for model training, gene-ranking, and exporting panels compatible with modern spatial transcriptomics platforms.</p>
 <h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
 <ul>
 <li>End-to-end gene selection using a gated autoencoder  </li>
 <li>L1-based sparsity for compact and interpretable gene panels  </li>
 <li>Directly operates on scRNA-seq data  </li>
-<li>Produces gene lists compatible with MERFISH, seqFISH, Xenium, MERSCOPE, etc.  </li>
 <li>Lightweight and easy-to-use Python API  </li>
 </ul>
 <h3 id="citation">Citation<a class="headerlink" href="#citation" title="Permanent link">&para;</a></h3>
-<p><a href="https://www.biorxiv.org/content/10.1101/2025.10.08.681071v1.abstract">Lu, Haoran, et al. <em>"Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments."</em> bioRxiv (2025): 2025-10.</a></p>
+<p><a href="https://www.biorxiv.org/content/10.1101/2025.10.08.681071v1.abstract">Lu, H., et al. <em>"Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments."</em> bioRxiv (2025): 2025-10.</a></p>
 <h2 id="2-installation">2. Installation<a class="headerlink" href="#2-installation" title="Permanent link">&para;</a></h2>
 <p>Install directly from GitHub:</p>
 <div class="codehilite"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/haoranlustat/ReconST.git
@@ -506,14 +506,13 @@ It uses a gated autoencoder to identify the most informative subset of genes for
 <span class="n">metrics</span> <span class="o">=</span> <span class="n">evaluate_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">merfish_adata</span><span class="p">[:,</span> <span class="n">common_genes</span><span class="p">])</span>
 </code></pre></div>
 
-<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<p>A complete working example is provided here:</p>
-<p><strong><a href="example.ipynb">example.ipynb</a></strong></p>
-<h2 id="4-method-overview">4. Method Overview<a class="headerlink" href="#4-method-overview" title="Permanent link">&para;</a></h2>
-<p>ReconST introduces a learnable gating layer that assigns an importance weight to each gene.<br />
-L1 regularization produces sparse selections, and genes with non-zero gate values form the final panel.<br />
-This approach integrates gene scoring and representation learning into a simple, unified training pipeline.</p>
-<h2 id="5-documentation">5. Documentation<a class="headerlink" href="#5-documentation" title="Permanent link">&para;</a></h2>
+<h2 id="4-tutorials">4. Tutorials<a class="headerlink" href="#4-tutorials" title="Permanent link">&para;</a></h2>
+<p>A complete working example tutorial:</p>
+<p><strong><a href="example.ipynb">Example.ipynb</a></strong></p>
+<h2 id="5-method-overview">5. Method Overview<a class="headerlink" href="#5-method-overview" title="Permanent link">&para;</a></h2>
+<p>ReconST uses a gated autoencoder architecture to identify genes that best reconstruct the full transcriptome when compressed to a small panel. A learnable gating layer assigns an importance weight to each gene, and an L1 sparsity penalty encourages most gates to approach zero so that the model focuses on a compact, informative subset of genes.</p>
+<p>During training, the gated expression matrix is passed through an encoder–decoder network that learns a low-dimensional representation and reconstructs the original expression profile. Genes with consistently high gate values are considered informative, while those with near-zero weights are excluded. After convergence, the final gene panel is obtained from the non-zero gates or by selecting the top-ranked genes. This end-to-end formulation provides a simple and scalable way to learn biologically meaningful gene panels suitable for targeted spatial transcriptomics.</p>
+<h2 id="6-documentation">6. Documentation<a class="headerlink" href="#6-documentation" title="Permanent link">&para;</a></h2>
 <p>Full documentation and tutorials:</p>
 <p>https://haoranlustat.github.io/ReconST/</p>
 
