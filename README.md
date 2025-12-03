@@ -22,8 +22,6 @@ https://www.biorxiv.org/content/10.1101/2025.10.08.681071v1.abstract
 - Produces gene lists compatible with MERFISH, seqFISH, Xenium, MERSCOPE, etc.  
 - Lightweight, minimal-dependency Python API  
 
--------------------------------------------------------------------------------
-
 ## 2. Installation
 
 Install directly from GitHub:
@@ -60,15 +58,12 @@ selected_genes = select_genes(model, top_k=200)
 5) Optional: evaluate on spatial data
 metrics = evaluate_model(model, merfish_adata[:, common_genes])
 
--------------------------------------------------------------------------------
-
 ## 3. Method Overview
 
 ReconST introduces a learnable gating layer that assigns an importance weight to each gene.
 L1 regularization produces sparse selections, and genes with non-zero gate values form the final panel.
 This approach integrates gene scoring and representation learning into a simple, unified training pipeline.
 
--------------------------------------------------------------------------------
 
 ## 4. Documentation
 
