@@ -1,0 +1,28 @@
+site_name: ReconST
+site_url: https://haoranlustat.github.io/ReconST
+repo_url: https://github.com/haoranlustat/ReconST
+repo_name: haoranlustat/ReconST
+
+theme:
+  name: material
+  features:
+    - navigation.top
+    - content.code.copy
+    - toc.integrate
+
+nav:
+  - Home: index.md
+  - Usage: usage.md
+  - API: api.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - tables
