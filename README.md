@@ -59,6 +59,14 @@ selected_genes = select_genes(model, top_k=200)
 metrics = evaluate_model(model, merfish_adata[:, common_genes])
 ```
 
+
+## Example
+
+A complete working example is provided here:
+
+**[example.ipynb](example.ipynb)**
+
+
 ---
 
 ## 4. Method Overview
