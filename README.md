@@ -40,21 +40,22 @@ from reconst import (
     select_genes,
 )
 
-1) Prepare shared gene set
+# 1) Prepare shared gene set
 common_genes = prepare_common_genes(sc_adata, merfish_adata)
 
-2) Build dataloader
+# 2) Build dataloader
 loader = create_data_loader(sc_adata[:, common_genes], batch_size=256)
 
-3) Train gated autoencoder
+# 3) Train gated autoencoder
 model = FeatureScreeningAutoencoder(n_genes=len(common_genes))
 train_model(model, loader, n_epochs=1000)
 
-4) Select top genes
+# 4) Select top genes
 selected_genes = select_genes(model, top_k=200)
 
-5) Optional: evaluate on spatial data
+# 5) Optional: evaluate on spatial data
 metrics = evaluate_model(model, merfish_adata[:, common_genes])
+
 
 ## 3. Method Overview
 
