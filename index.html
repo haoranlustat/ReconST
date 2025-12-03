@@ -284,6 +284,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#key-features" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -293,12 +305,28 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#citation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation
+        Citation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Installation
       
     </span>
   </a>
@@ -306,10 +334,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-prepare-shared-gene-set" class="md-nav__link">
+  <a href="#3-quick-start" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Prepare shared gene set
+        3. Quick Start
       
     </span>
   </a>
@@ -317,10 +345,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-build-dataloader" class="md-nav__link">
+  <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Build dataloader
+        Example
       
     </span>
   </a>
@@ -328,10 +356,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-train-gated-autoencoder" class="md-nav__link">
+  <a href="#4-method-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Train gated autoencoder
+        4. Method Overview
       
     </span>
   </a>
@@ -339,21 +367,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-select-top-genes" class="md-nav__link">
+  <a href="#5-documentation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Select top genes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-optional-evaluate-on-spatial-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Optional: evaluate on spatial data
+        5. Documentation
       
     </span>
   </a>
@@ -443,55 +460,62 @@
 
 
 <h1 id="reconst-optimal-gene-panel-selection-for-targeted-spatial-transcriptomics-experiments">ReconST: Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments<a class="headerlink" href="#reconst-optimal-gene-panel-selection-for-targeted-spatial-transcriptomics-experiments" title="Permanent link">&para;</a></h1>
-<p>ReconST is a Python package for automated and data-driven gene panel design in targeted spatial transcriptomics experiments.
+<h2 id="1-introduction">1. Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h2>
+<p>ReconST is a Python package for automated and data-driven gene panel design in targeted spatial transcriptomics experiments.<br />
 It uses a gated autoencoder to identify the most informative subset of genes for reconstructing transcriptomic structure, enabling efficient and biologically meaningful panel selection.</p>
-<p>Citation:
-Lu, Haoran, et al. "Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments." bioRxiv (2025): 2025-10.
-https://www.biorxiv.org/content/10.1101/2025.10.08.681071v1.abstract</p>
-<hr />
-<h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
+<h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
 <ul>
 <li>End-to-end gene selection using a gated autoencoder  </li>
 <li>L1-based sparsity for compact and interpretable gene panels  </li>
 <li>Directly operates on scRNA-seq data  </li>
 <li>Produces gene lists compatible with MERFISH, seqFISH, Xenium, MERSCOPE, etc.  </li>
-<li>Lightweight, minimal-dependency Python API  </li>
+<li>Lightweight and easy-to-use Python API  </li>
 </ul>
-<hr />
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<h3 id="citation">Citation<a class="headerlink" href="#citation" title="Permanent link">&para;</a></h3>
+<p><a href="https://www.biorxiv.org/content/10.1101/2025.10.08.681071v1.abstract">Lu, Haoran, et al. <em>"Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments."</em> bioRxiv (2025): 2025-10.</a></p>
+<h2 id="2-installation">2. Installation<a class="headerlink" href="#2-installation" title="Permanent link">&para;</a></h2>
 <p>Install directly from GitHub:</p>
-<p>pip install git+https://github.com/haoranlustat/ReconST.git</p>
-<hr />
-<p>Quick Start</p>
-<p>import reconst
-from reconst import (
-    FeatureScreeningAutoencoder,
-    prepare_common_genes,
-    create_data_loader,
-    train_model,
-    evaluate_model,
-    select_genes,
-)</p>
-<h2 id="1-prepare-shared-gene-set">1. Prepare shared gene set<a class="headerlink" href="#1-prepare-shared-gene-set" title="Permanent link">&para;</a></h2>
-<p>common_genes = prepare_common_genes(sc_adata, merfish_adata)</p>
-<h2 id="2-build-dataloader">2. Build dataloader<a class="headerlink" href="#2-build-dataloader" title="Permanent link">&para;</a></h2>
-<p>loader = create_data_loader(sc_adata[:, common_genes], batch_size=256)</p>
-<h2 id="3-train-gated-autoencoder">3. Train gated autoencoder<a class="headerlink" href="#3-train-gated-autoencoder" title="Permanent link">&para;</a></h2>
-<p>model = FeatureScreeningAutoencoder(n_genes=len(common_genes))
-train_model(model, loader, n_epochs=1000)</p>
-<h2 id="4-select-top-genes">4. Select top genes<a class="headerlink" href="#4-select-top-genes" title="Permanent link">&para;</a></h2>
-<p>selected_genes = select_genes(model, top_k=200)</p>
-<h2 id="5-optional-evaluate-on-spatial-data">5. Optional: evaluate on spatial data<a class="headerlink" href="#5-optional-evaluate-on-spatial-data" title="Permanent link">&para;</a></h2>
-<p>metrics = evaluate_model(model, merfish_adata[:, common_genes])</p>
-<hr />
-<p>Method Overview</p>
-<p>ReconST introduces a learnable gating layer that assigns an importance weight to each gene.
-L1 regularization produces sparse selections, and genes with non-zero gate values form the final panel.
+<div class="codehilite"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/haoranlustat/ReconST.git
+</code></pre></div>
+
+<h2 id="3-quick-start">3. Quick Start<a class="headerlink" href="#3-quick-start" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">reconst</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">reconst</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">FeatureScreeningAutoencoder</span><span class="p">,</span>
+    <span class="n">prepare_common_genes</span><span class="p">,</span>
+    <span class="n">create_data_loader</span><span class="p">,</span>
+    <span class="n">train_model</span><span class="p">,</span>
+    <span class="n">evaluate_model</span><span class="p">,</span>
+    <span class="n">select_genes</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># 1) Prepare shared gene set</span>
+<span class="n">common_genes</span> <span class="o">=</span> <span class="n">prepare_common_genes</span><span class="p">(</span><span class="n">sc_adata</span><span class="p">,</span> <span class="n">merfish_adata</span><span class="p">)</span>
+
+<span class="c1"># 2) Build dataloader</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">create_data_loader</span><span class="p">(</span><span class="n">sc_adata</span><span class="p">[:,</span> <span class="n">common_genes</span><span class="p">],</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
+
+<span class="c1"># 3) Train gated autoencoder</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">FeatureScreeningAutoencoder</span><span class="p">(</span><span class="n">n_genes</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">common_genes</span><span class="p">))</span>
+<span class="n">train_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">loader</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># 4) Select top genes</span>
+<span class="n">selected_genes</span> <span class="o">=</span> <span class="n">select_genes</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="c1"># 5) Optional: evaluate on spatial data</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">evaluate_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">merfish_adata</span><span class="p">[:,</span> <span class="n">common_genes</span><span class="p">])</span>
+</code></pre></div>
+
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<p>A complete working example is provided here:</p>
+<p><strong><a href="example.ipynb">example.ipynb</a></strong></p>
+<h2 id="4-method-overview">4. Method Overview<a class="headerlink" href="#4-method-overview" title="Permanent link">&para;</a></h2>
+<p>ReconST introduces a learnable gating layer that assigns an importance weight to each gene.<br />
+L1 regularization produces sparse selections, and genes with non-zero gate values form the final panel.<br />
 This approach integrates gene scoring and representation learning into a simple, unified training pipeline.</p>
-<hr />
-<p>Documentation</p>
-<p>Full documentation and tutorials:
-https://haoranlustat.github.io/ReconST/</p>
+<h2 id="5-documentation">5. Documentation<a class="headerlink" href="#5-documentation" title="Permanent link">&para;</a></h2>
+<p>Full documentation and tutorials:</p>
+<p>https://haoranlustat.github.io/ReconST/</p>
 
 
 
