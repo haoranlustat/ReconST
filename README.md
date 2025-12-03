@@ -4,9 +4,14 @@ Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments
 
 ## Installation
 
+## Installation
+
+You can install the latest version directly from GitHub:
+
 ```bash
-pip install -e .
-```
+pip install git+https://github.com/haoranlustat/ReconST.git
+
+
 
 ## Data Structure
 
