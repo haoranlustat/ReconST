@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#reconst" class="md-skip">
+        <a href="#reconst-optimal-gene-panel-selection-for-targeted-spatial-transcriptomics-experiments" class="md-skip">
           Skip to content
         </a>
       
@@ -233,24 +233,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Home
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -267,58 +249,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#links" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Links
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -398,19 +328,71 @@
   
 
 
-<h1 id="reconst">ReconST<a class="headerlink" href="#reconst" title="Permanent link">&para;</a></h1>
-<p>Gene panel selection for spatial transcriptomics.</p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>ReconST provides:
-- FeatureScreeningAutoencoder
-- Gene selection pipeline
-- Training &amp; evaluation utilities</p>
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
-</code></pre></div>
-
-<h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">&para;</a></h2>
-<p>GitHub: https://github.com/haoranlustat/ReconST</p>
+<h1 id="reconst-optimal-gene-panel-selection-for-targeted-spatial-transcriptomics-experiments">ReconST: Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments<a class="headerlink" href="#reconst-optimal-gene-panel-selection-for-targeted-spatial-transcriptomics-experiments" title="Permanent link">&para;</a></h1>
+<p>ReconST is a Python package for automated and data-driven gene panel design in targeted spatial transcriptomics experiments.
+It uses a gated autoencoder to identify the most informative subset of genes for reconstructing transcriptomic structure, enabling efficient and biologically meaningful panel selection.</p>
+<p>Preprint:
+https://www.biorxiv.org/content/10.1101/2025.10.08.681071v1.abstract</p>
+<p>Citation:
+Lu, Haoran, et al. "Optimal Gene Panel Selection for Targeted Spatial Transcriptomics Experiments." bioRxiv (2025): 2025-10.
+https://www.biorxiv.org/content/10.1101/2025.10.08.681071v1.abstract</p>
+<hr />
+<p>Key Features</p>
+<ul>
+<li>End-to-end gene selection using a gated autoencoder  </li>
+<li>L1-based sparsity for compact and interpretable gene panels  </li>
+<li>Directly operates on scRNA-seq data  </li>
+<li>Produces gene lists compatible with MERFISH, seqFISH, Xenium, MERSCOPE, etc.  </li>
+<li>Lightweight, minimal-dependency Python API  </li>
+</ul>
+<hr />
+<p>Installation</p>
+<p>Install directly from GitHub:</p>
+<p>pip install git+https://github.com/haoranlustat/ReconST.git</p>
+<hr />
+<p>Data Structure</p>
+<p>Expected directory layout:</p>
+<p>./example_data/
+  ├── example_sc.h5ad
+  ├── example_merfish.h5ad
+  ├── example_merfish_cell_metadata.csv
+  ├── example_merfish_ccf_coordinates.csv
+  └── example_merfish_gene.csv</p>
+<p>./gene_panels/
+  └── all_gene_symbols.csv   # optional utility output</p>
+<p>./results/
+  └── (model outputs and selected gene panels)</p>
+<hr />
+<p>Quick Start</p>
+<p>import reconst
+from reconst import (
+    FeatureScreeningAutoencoder,
+    prepare_common_genes,
+    create_data_loader,
+    train_model,
+    evaluate_model,
+    select_genes,
+)</p>
+<h1 id="1-prepare-shared-gene-set">1. Prepare shared gene set<a class="headerlink" href="#1-prepare-shared-gene-set" title="Permanent link">&para;</a></h1>
+<p>common_genes = prepare_common_genes(sc_adata, merfish_adata)</p>
+<h1 id="2-build-dataloader">2. Build dataloader<a class="headerlink" href="#2-build-dataloader" title="Permanent link">&para;</a></h1>
+<p>loader = create_data_loader(sc_adata[:, common_genes], batch_size=256)</p>
+<h1 id="3-train-gated-autoencoder">3. Train gated autoencoder<a class="headerlink" href="#3-train-gated-autoencoder" title="Permanent link">&para;</a></h1>
+<p>model = FeatureScreeningAutoencoder(n_genes=len(common_genes))
+train_model(model, loader, n_epochs=1000)</p>
+<h1 id="4-select-top-genes">4. Select top genes<a class="headerlink" href="#4-select-top-genes" title="Permanent link">&para;</a></h1>
+<p>selected_genes = select_genes(model, top_k=200)</p>
+<h1 id="5-optional-evaluate-on-spatial-data">5. Optional: evaluate on spatial data<a class="headerlink" href="#5-optional-evaluate-on-spatial-data" title="Permanent link">&para;</a></h1>
+<p>metrics = evaluate_model(model, merfish_adata[:, common_genes])</p>
+<hr />
+<p>Method Overview</p>
+<p>ReconST introduces a learnable gating layer that assigns an importance weight to each gene.
+L1 regularization produces sparse selections, and genes with non-zero gate values form the final panel.
+This approach integrates gene scoring and representation learning into a simple, unified training pipeline.</p>
+<hr />
+<p>Documentation</p>
+<p>Full documentation and tutorials:
+https://haoranlustat.github.io/ReconST/</p>
 
 
 
