@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#api-reference" class="md-skip">
+        <a href="#reconst-api-reference" class="md-skip">
           Skip to content
         </a>
       
@@ -393,18 +393,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#reconst" class="md-nav__link">
+  <a href="#1-model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        reconst
+        1. Model
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reconst.FeatureScreeningAutoencoder" class="md-nav__link">
+    <nav class="md-nav" aria-label="1. Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#featurescreeningautoencoder" class="md-nav__link">
     <span class="md-ellipsis">
       
         FeatureScreeningAutoencoder
@@ -413,56 +414,140 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#reconst.create_data_loader" class="md-nav__link">
+  <a href="#2-data-utilities" class="md-nav__link">
     <span class="md-ellipsis">
       
-        create_data_loader
+        2. Data Utilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Data Utilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_data_loaderadata-batch_size256-train_split08-shuffletrue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create_data_loader(adata, batch_size=256, train_split=0.8, shuffle=True)
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#reconst.evaluate_model" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#prepare_common_genesadata1-adata2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        evaluate_model
+        prepare_common_genes(adata1, adata2)
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#reconst.prepare_common_genes" class="md-nav__link">
+  <a href="#3-training" class="md-nav__link">
     <span class="md-ellipsis">
       
-        prepare_common_genes
+        3. Training
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#train_modelmodel-train_loader-test_loader-num_epochs20-lr1e-3-weight_decay1e-5-l_lambda1e-4-devicecpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        train_model(model, train_loader, test_loader, num_epochs=20, lr=1e-3, weight_decay=1e-5, l_lambda=1e-4, device='cpu')
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#reconst.select_genes" class="md-nav__link">
+  <a href="#4-evaluation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        select_genes
+        4. Evaluation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Evaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evaluate_modelmodel-test_loader-gene_masknone-devicecpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        evaluate_model(model, test_loader, gene_mask=None, device='cpu')
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#reconst.train_model" class="md-nav__link">
+  <a href="#5-gene-selection" class="md-nav__link">
     <span class="md-ellipsis">
       
-        train_model
+        5. Gene Selection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Gene Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#select_genesmodel-threshold0001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        select_genes(model, threshold=0.001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
       
     </span>
   </a>
@@ -497,474 +582,91 @@
   
 
 
-<h1 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h1>
-
-
-<div class="doc doc-object doc-module">
-
-
-
-<a id="reconst"></a>
-    <div class="doc doc-contents first">
-
-        <p>ReconST: Gene panel selection for spatial transcriptomics</p>
-
-
-
-
-
-
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="reconst.FeatureScreeningAutoencoder" class="doc doc-heading">
-            <code>FeatureScreeningAutoencoder</code>
-
-
-<a href="#reconst.FeatureScreeningAutoencoder" class="headerlink" title="Permanent link">&para;</a></h2>
-
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="torch.nn.Module">Module</span></code></p>
-
-
-        <p>Autoencoder with learnable feature importance weights</p>
-
-
-
-
-
-
-
-
-              <details class="quote">
-                <summary>Source code in <code>reconst/model.py</code></summary>
-                <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">FeatureScreeningAutoencoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Autoencoder with learnable feature importance weights&quot;&quot;&quot;</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">lk</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">FeatureScreeningAutoencoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">feature_importance</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">input_size</span><span class="p">))</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="n">lk</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="n">lk</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">),</span>
-        <span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embedding_size</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="n">lk</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dp</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">(</span><span class="n">lk</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">input_size</span><span class="p">),</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">screened_features</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_importance</span>
-        <span class="n">encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">screened_features</span><span class="p">)</span>
-        <span class="n">decoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">screened_features</span><span class="p">,</span> <span class="n">encoded</span><span class="p">,</span> <span class="n">decoded</span>
-</code></pre></div></td></tr></table></div>
-              </details>
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="reconst.create_data_loader" class="doc doc-heading">
-            <code class=" language-python"><span class="n">create_data_loader</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">train_split</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
-
-<a href="#reconst.create_data_loader" class="headerlink" title="Permanent link">&para;</a></h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Create train and test data loaders from AnnData object</p>
-
-
-            <details class="quote">
-              <summary>Source code in <code>reconst/data.py</code></summary>
-              <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_data_loader</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">train_split</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create train and test data loaders from AnnData object&quot;&quot;&quot;</span>
-    <span class="n">matrix</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="s2">&quot;toarray&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">adata</span><span class="o">.</span><span class="n">X</span>
-    <span class="n">gene_matrix</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-    <span class="n">dataset</span> <span class="o">=</span> <span class="n">GeneExpressionDataset</span><span class="p">(</span><span class="n">gene_matrix</span><span class="p">)</span>
-
-    <span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">train_split</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
-    <span class="n">test_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">-</span> <span class="n">train_size</span>
-    <span class="n">train_dataset</span><span class="p">,</span> <span class="n">test_dataset</span> <span class="o">=</span> <span class="n">random_split</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="p">[</span><span class="n">train_size</span><span class="p">,</span> <span class="n">test_size</span><span class="p">])</span>
-
-    <span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="n">shuffle</span><span class="p">)</span>
-    <span class="n">test_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">test_loader</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="reconst.evaluate_model" class="doc doc-heading">
-            <code class=" language-python"><span class="n">evaluate_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">,</span> <span class="n">gene_mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span></code>
-
-<a href="#reconst.evaluate_model" class="headerlink" title="Permanent link">&para;</a></h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Evaluate model on test data, optionally with gene filtering</p>
-
-
-            <details class="quote">
-              <summary>Source code in <code>reconst/trainer.py</code></summary>
-              <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">evaluate_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">,</span> <span class="n">gene_mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Evaluate model on test data, optionally with gene filtering&quot;&quot;&quot;</span>
-    <span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
-    <span class="n">test_loss</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
-            <span class="n">genes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-
-            <span class="k">if</span> <span class="n">gene_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">gene_mask</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-                    <span class="n">gene_mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">gene_mask</span><span class="p">)</span>
-                <span class="n">gene_mask</span> <span class="o">=</span> <span class="n">gene_mask</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-                <span class="n">filtered_genes</span> <span class="o">=</span> <span class="n">genes</span> <span class="o">*</span> <span class="n">gene_mask</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">filtered_genes</span> <span class="o">=</span> <span class="n">genes</span>
-
-            <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">filtered_genes</span><span class="p">)</span>
-            <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">genes</span><span class="p">)</span>
-            <span class="n">test_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">*</span> <span class="n">genes</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-    <span class="n">test_loss</span> <span class="o">/=</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_loader</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">test_loss</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="reconst.prepare_common_genes" class="doc doc-heading">
-            <code class=" language-python"><span class="n">prepare_common_genes</span><span class="p">(</span><span class="n">adata1</span><span class="p">,</span> <span class="n">adata2</span><span class="p">)</span></code>
-
-<a href="#reconst.prepare_common_genes" class="headerlink" title="Permanent link">&para;</a></h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Find common genes between two datasets and filter both</p>
-
-
-            <details class="quote">
-              <summary>Source code in <code>reconst/data.py</code></summary>
-              <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">prepare_common_genes</span><span class="p">(</span><span class="n">adata1</span><span class="p">,</span> <span class="n">adata2</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find common genes between two datasets and filter both&quot;&quot;&quot;</span>
-    <span class="n">genes1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">adata1</span><span class="o">.</span><span class="n">var_names</span><span class="p">)</span>
-    <span class="n">genes2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">adata2</span><span class="o">.</span><span class="n">var_names</span><span class="p">)</span>
-    <span class="n">common_genes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">genes1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">genes2</span><span class="p">))</span>
-
-    <span class="n">genes_to_keep1</span> <span class="o">=</span> <span class="p">[</span><span class="n">gene</span> <span class="ow">in</span> <span class="n">common_genes</span> <span class="k">for</span> <span class="n">gene</span> <span class="ow">in</span> <span class="n">adata1</span><span class="o">.</span><span class="n">var_names</span><span class="p">]</span>
-    <span class="n">genes_to_keep2</span> <span class="o">=</span> <span class="p">[</span><span class="n">gene</span> <span class="ow">in</span> <span class="n">common_genes</span> <span class="k">for</span> <span class="n">gene</span> <span class="ow">in</span> <span class="n">adata2</span><span class="o">.</span><span class="n">var_names</span><span class="p">]</span>
-
-    <span class="n">adata1_common</span> <span class="o">=</span> <span class="n">adata1</span><span class="p">[:,</span> <span class="n">genes_to_keep1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">adata2_common</span> <span class="o">=</span> <span class="n">adata2</span><span class="p">[:,</span> <span class="n">genes_to_keep2</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
-    <span class="c1"># Align gene order</span>
-    <span class="n">adata2_common</span> <span class="o">=</span> <span class="n">adata2_common</span><span class="p">[:,</span> <span class="n">adata1_common</span><span class="o">.</span><span class="n">var_names</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
-    <span class="k">return</span> <span class="n">adata1_common</span><span class="p">,</span> <span class="n">adata2_common</span><span class="p">,</span> <span class="n">common_genes</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="reconst.select_genes" class="doc doc-heading">
-            <code class=" language-python"><span class="n">select_genes</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span></code>
-
-<a href="#reconst.select_genes" class="headerlink" title="Permanent link">&para;</a></h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Select genes based on feature importance threshold</p>
-
-
-            <details class="quote">
-              <summary>Source code in <code>reconst/trainer.py</code></summary>
-              <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">select_genes</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.001</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Select genes based on feature importance threshold&quot;&quot;&quot;</span>
-    <span class="n">feature_importances</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">feature_importance</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-    <span class="n">genes_mask</span> <span class="o">=</span> <span class="n">feature_importances</span> <span class="o">&gt;=</span> <span class="n">threshold</span>
-    <span class="k">return</span> <span class="n">genes_mask</span><span class="p">,</span> <span class="n">feature_importances</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="reconst.train_model" class="doc doc-heading">
-            <code class=" language-python"><span class="n">train_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">1e-05</span><span class="p">,</span> <span class="n">l_lambda</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span></code>
-
-<a href="#reconst.train_model" class="headerlink" title="Permanent link">&para;</a></h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Train the autoencoder model</p>
-
-
-            <details class="quote">
-              <summary>Source code in <code>reconst/trainer.py</code></summary>
-              <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">train_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
-                <span class="n">weight_decay</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">l_lambda</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Train the autoencoder model&quot;&quot;&quot;</span>
-    <span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
-    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="n">weight_decay</span><span class="p">)</span>
-
-    <span class="n">train_losses</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">test_losses</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
-        <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
-        <span class="n">train_loss</span> <span class="o">=</span> <span class="mi">0</span>
-
-        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
-            <span class="n">genes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-            <span class="n">screened_features</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">genes</span><span class="p">)</span>
-
-            <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">genes</span><span class="p">)</span>
-            <span class="n">l1_penalty</span> <span class="o">=</span> <span class="n">l_lambda</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">feature_importance</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-            <span class="n">total_loss</span> <span class="o">=</span> <span class="n">loss</span> <span class="o">+</span> <span class="n">l1_penalty</span>
-
-            <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
-            <span class="n">total_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-            <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-
-            <span class="n">train_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">*</span> <span class="n">genes</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-        <span class="n">train_loss</span> <span class="o">/=</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
-        <span class="n">train_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">train_loss</span><span class="p">)</span>
-
-        <span class="c1"># Evaluate on test data</span>
-        <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
-        <span class="n">test_loss</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-            <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
-                <span class="n">genes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-                <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">genes</span><span class="p">)</span>
-                <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">genes</span><span class="p">)</span>
-                <span class="n">test_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">*</span> <span class="n">genes</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-        <span class="n">test_loss</span> <span class="o">/=</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_loader</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
-        <span class="n">test_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_loss</span><span class="p">)</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Epoch [</span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">num_epochs</span><span class="si">}</span><span class="s1">], Train: </span><span class="si">{</span><span class="n">train_loss</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">, Test: </span><span class="si">{</span><span class="n">test_loss</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">train_losses</span><span class="p">,</span> <span class="n">test_losses</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-
-
-  </div>
-
-    </div>
-
-</div>
+<h1 id="reconst-api-reference">ReconST API Reference<a class="headerlink" href="#reconst-api-reference" title="Permanent link">&para;</a></h1>
+<p>ReconST provides a lightweight, autoencoder-based framework for gene panel selection in spatial transcriptomics.<br />
+This page summarizes the key classes and functions, organized by workflow: data preparation, model definition, training, evaluation, and gene selection.</p>
+<hr />
+<h2 id="1-model">1. Model<a class="headerlink" href="#1-model" title="Permanent link">&para;</a></h2>
+<h3 id="featurescreeningautoencoder"><strong>FeatureScreeningAutoencoder</strong><a class="headerlink" href="#featurescreeningautoencoder" title="Permanent link">&para;</a></h3>
+<p>Autoencoder with a learnable feature-importance layer for gene selection.</p>
+<p><strong>Architecture</strong>
+- Learnable gene-importance layer<br />
+- Encoder: <code>input_size → 512 → 256 → embedding_size</code><br />
+- Decoder: <code>embedding_size → 256 → 512 → input_size</code></p>
+<p><strong>Parameters</strong>
+- <code>input_size</code> (int): Number of genes<br />
+- <code>embedding_size</code> (int): Latent dimension<br />
+- <code>dp</code> (float): Dropout probability<br />
+- <code>lk</code> (float): LeakyReLU negative slope  </p>
+<p><strong>Attributes</strong>
+- <code>feature_importance</code>: Learnable gene weights<br />
+- <code>encoder</code>, <code>decoder</code>: Sequential modules  </p>
+<p><strong>Example</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">reconst</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureScreeningAutoencoder</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">FeatureScreeningAutoencoder</span><span class="p">(</span><span class="n">input_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">embedding_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">screened</span><span class="p">,</span> <span class="n">latent</span><span class="p">,</span> <span class="n">recon</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2 id="2-data-utilities">2. Data Utilities<a class="headerlink" href="#2-data-utilities" title="Permanent link">&para;</a></h2>
+<h3 id="create_data_loaderadata-batch_size256-train_split08-shuffletrue"><strong>create_data_loader(adata, batch_size=256, train_split=0.8, shuffle=True)</strong><a class="headerlink" href="#create_data_loaderadata-batch_size256-train_split08-shuffletrue" title="Permanent link">&para;</a></h3>
+<p>Create training and test DataLoaders from an AnnData object.</p>
+<p><strong>Example</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">scanpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sc</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">reconst</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_data_loader</span>
+
+<span class="n">adata</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_h5ad</span><span class="p">(</span><span class="s2">&quot;data.h5ad&quot;</span><span class="p">)</span>
+<span class="n">train_loader</span><span class="p">,</span> <span class="n">test_loader</span> <span class="o">=</span> <span class="n">create_data_loader</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h3 id="prepare_common_genesadata1-adata2"><strong>prepare_common_genes(adata1, adata2)</strong><a class="headerlink" href="#prepare_common_genesadata1-adata2" title="Permanent link">&para;</a></h3>
+<p>Find and align common genes between two datasets.</p>
+<hr />
+<h2 id="3-training">3. Training<a class="headerlink" href="#3-training" title="Permanent link">&para;</a></h2>
+<h3 id="train_modelmodel-train_loader-test_loader-num_epochs20-lr1e-3-weight_decay1e-5-l_lambda1e-4-devicecpu"><strong>train_model(model, train_loader, test_loader, num_epochs=20, lr=1e-3, weight_decay=1e-5, l_lambda=1e-4, device='cpu')</strong><a class="headerlink" href="#train_modelmodel-train_loader-test_loader-num_epochs20-lr1e-3-weight_decay1e-5-l_lambda1e-4-devicecpu" title="Permanent link">&para;</a></h3>
+<p>Train the autoencoder with MSE + L1 sparsity penalty.</p>
+<p><strong>Example</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">reconst</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_model</span><span class="p">,</span> <span class="n">FeatureScreeningAutoencoder</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">FeatureScreeningAutoencoder</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+<span class="n">train_losses</span><span class="p">,</span> <span class="n">test_losses</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">,</span>
+    <span class="n">num_epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">l_lambda</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2 id="4-evaluation">4. Evaluation<a class="headerlink" href="#4-evaluation" title="Permanent link">&para;</a></h2>
+<h3 id="evaluate_modelmodel-test_loader-gene_masknone-devicecpu"><strong>evaluate_model(model, test_loader, gene_mask=None, device='cpu')</strong><a class="headerlink" href="#evaluate_modelmodel-test_loader-gene_masknone-devicecpu" title="Permanent link">&para;</a></h3>
+<p>Compute reconstruction MSE with all genes or a selected subset.</p>
+<p><strong>Example</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">loss</span> <span class="o">=</span> <span class="n">evaluate_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2 id="5-gene-selection">5. Gene Selection<a class="headerlink" href="#5-gene-selection" title="Permanent link">&para;</a></h2>
+<h3 id="select_genesmodel-threshold0001"><strong>select_genes(model, threshold=0.001)</strong><a class="headerlink" href="#select_genesmodel-threshold0001" title="Permanent link">&para;</a></h3>
+<p>Extract selected genes based on learned feature importance.</p>
+<p><strong>Example</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">gene_mask</span><span class="p">,</span> <span class="n">importances</span> <span class="o">=</span> <span class="n">select_genes</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">selected_names</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">var_names</span><span class="p">[</span><span class="n">gene_mask</span><span class="p">]</span>
+</code></pre></div>
+
+<hr />
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>ReconST exposes a streamlined, end-to-end workflow:</p>
+<ol>
+<li>Load and align AnnData  </li>
+<li>Build DataLoaders  </li>
+<li>Initialize the autoencoder  </li>
+<li>Train with sparsity  </li>
+<li>Evaluate  </li>
+<li>Select informative genes  </li>
+</ol>
 
 
 
